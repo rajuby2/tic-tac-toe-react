@@ -156,11 +156,15 @@ const Game =()=>{
     const [board, setBoard] = useState(Array(boardSize).fill(""));
     const [player, setPlayer] = useState("X");
     const [message, setMessage] = useState("Start the Game!!!");
+    const [gameInfo, setgameInfo] = useState(3);
+    let infoText = `matching ${gameInfo} selections in a straight line either horizontal, vertical, or diagonal`;
+
     
 
 
     const refresh = () => {
         setBoardSize(level ==="hard" ? 25 : 9);
+        setgameInfo(level ==="hard" ? 4 : 3);
         setBoard(Array(boardSize).fill(""));
         setPlayer("X");
         setMessage("Start the Game!!!");
@@ -170,6 +174,7 @@ const Game =()=>{
         setLevel(event.target.value);
         setBoardSize(event.target.value ==="hard" ? 25 : 9);
         setBoard(Array(event.target.value ==="hard" ? 25 : 9).fill(""));
+        setgameInfo(event.target.value ==="hard" ? 4 : 3);
         setPlayer("X");
         setMessage("Start the Game!!!");
       };
@@ -202,7 +207,7 @@ const Game =()=>{
 
     return (<div>
             <h1 className='game-header'>Tic Tac Toe</h1>
-            <Difficulty onChange={handleLevelChange}/>
+            <Difficulty onChange={handleLevelChange} info={infoText}/>
             <Message value={message} />
             <Board onClick={handleInput} value={board} size={boardSize} level={level} /> 
             <Refresh onClick={refresh} value={'Refresh'} />

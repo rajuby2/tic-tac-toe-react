@@ -95,3 +95,8 @@ select::-ms-expand {
 .game-header{
   text-align: center;
 }
+
+.center
+{
+  display: contents;
+}

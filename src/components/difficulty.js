@@ -5,9 +5,9 @@ const options = [
   { label: 'Hard', value: 'hard' },
 ];
 
-const Dropdown = ({ label, value, options, onChange }) => {
+const Dropdown = ({ label, value, options, onChange, info }) => {
   return (
-    <div>
+    <div className='center'>
       <h2>
       {label}
       </h2>
@@ -18,6 +18,9 @@ const Dropdown = ({ label, value, options, onChange }) => {
           ))}
         </select>
       </div>
+      <h4>
+      {info}
+      </h4>
     </div>
   );
 };
@@ -29,6 +32,7 @@ const Difficulty = (props) => (
       options={options}
       // value={props.level}
       onChange={props.onChange}
+      info={props.info}
     />
   </div>
 )
